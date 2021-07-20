@@ -12,3 +12,5 @@ fun Location.we(): BlockVector3 = BlockVector3.at(x, y, z)
 fun Location.blockVector2(): BlockVector2 = BlockVector2.at(x, z)
 fun Vector3.location(): Location = Location(null, x, y, z)
 fun BlockVector3.location(): Location = Location(null, x.toDouble(), y.toDouble(), z.toDouble())
+// Radius
+fun Int.blockVector2(): BlockVector2 = BlockVector2.at(this, this)
