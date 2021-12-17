@@ -17,3 +17,16 @@ dependencies {
     implementation("net.axay:kspigot:1.18.0")
     implementation("com.fastasyncworldedit:FastAsyncWorldEdit-Bukkit:1.17-418")
 }
+
+tasks {
+    build {
+        dependsOn(reobfJar)
+    }
+    compileJava {
+        options.encoding = "UTF-8"
+        options.release.set(17)
+    }
+    compileKotlin {
+        kotlinOptions.jvmTarget = "17"
+    }
+}
