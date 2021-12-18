@@ -1,4 +1,4 @@
-package de.hglabor.utils.kutils.utils.extensions
+package de.hglabor.utils.kutils
 
 import net.axay.kspigot.items.itemStack
 import net.axay.kspigot.items.meta

@@ -1,4 +1,4 @@
-package de.hglabor.utils.kutils.utils
+package de.hglabor.utils.kutils
 
 import net.axay.kspigot.extensions.broadcast
 import org.bukkit.Bukkit

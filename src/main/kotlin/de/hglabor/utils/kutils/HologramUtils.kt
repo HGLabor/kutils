@@ -1,4 +1,4 @@
-package de.hglabor.utils.kutils.utils.extensions
+package de.hglabor.utils.kutils
 
 import net.axay.kspigot.extensions.geometry.subtract
 import org.bukkit.Location
