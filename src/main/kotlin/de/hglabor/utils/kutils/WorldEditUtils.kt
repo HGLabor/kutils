@@ -13,7 +13,6 @@ import com.sk89q.worldedit.world.block.BlockState
 import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.World
-import org.bukkit.entity.Player
 
 fun World.we() = BukkitWorld(this)
 fun Location.we(): BlockVector3 = BlockVector3.at(x, y, z)
@@ -27,6 +26,7 @@ fun Material.defaultPattern(): BlockState = BukkitAdapter.asBlockState(stack())
 val worldEdit: WorldEdit get() = WorldEdit.getInstance()
 
 /** Create a new `EditSession` and then close it after running the `block` */
+@Suppress("DEPRECATION")
 inline fun WorldEdit.editSession(world: World, maxBlocks: Int = -1, block: EditSession.() -> Unit) = editSessionFactory.getEditSession(world.we(), maxBlocks).apply(block).close()
 
 fun EditSession.cylinder(region: CylinderRegion, material: Material, filled: Boolean = true, firstAir: Boolean = false, height: Int = region.height) {
