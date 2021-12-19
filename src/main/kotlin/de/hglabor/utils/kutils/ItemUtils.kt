@@ -5,6 +5,8 @@ import net.axay.kspigot.items.meta
 import net.axay.kspigot.items.name
 import org.bukkit.Material
 import org.bukkit.entity.Player
+import org.bukkit.event.block.Action
+import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 
@@ -38,3 +40,6 @@ fun namedItem(material: Material, name: String): ItemStack {
         meta { this.name = name }
     }
 }
+
+private val PlayerInteractEvent.isRightClick get() = action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK
+private val PlayerInteractEvent.isLeftClick get() = action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK
