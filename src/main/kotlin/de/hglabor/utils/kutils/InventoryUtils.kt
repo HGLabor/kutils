@@ -6,10 +6,12 @@ import net.axay.kspigot.event.unregister
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryCloseEvent
+import org.bukkit.inventory.ItemStack
 
-fun Player.inv(size: Int, name: String = "", onClose: InventoryCloseEvent.() -> Unit = {}) {
+fun Player.inv(size: Int, name: String = "", content: List<ItemStack>, onClose: InventoryCloseEvent.() -> Unit = {}) {
     @Suppress("DEPRECATION")
     openInventory(Bukkit.createInventory(null, size, name).apply {
+        addItem(*content.toTypedArray())
         @Suppress("JoinDeclarationAndAssignment")
         lateinit var listener: SingleListener<InventoryCloseEvent>
         listener = listen {
