@@ -65,3 +65,4 @@ fun Entity.isAdventure() = this is Player && this.gameMode == GameMode.ADVENTURE
 fun Entity.isSpectator() = this is Player && this.gameMode == GameMode.SPECTATOR
 
 fun Player.onGround() = !isFlying && location.clone().subtract(0, 0.1, 0).block.type != Material.AIR && velocity.y == 0.0
+val Player.standingBlock get() = location.block.getRelative(BlockFace.DOWN)

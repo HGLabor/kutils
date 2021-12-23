@@ -3,6 +3,7 @@ package de.hglabor.utils.kutils
 import net.axay.kspigot.extensions.geometry.add
 import org.bukkit.*
 import org.bukkit.block.Block
+import org.bukkit.block.BlockFace
 
 fun world(worldName: String) = Bukkit.getWorld(worldName)
 
@@ -34,6 +35,7 @@ fun World.trainingGameRules(): World {
 }
 
 fun Location.addY(y: Number) = this.clone().add(0, y, 0)
+val Location.blockBelow get() = block.getRelative(BlockFace.DOWN)
 
 fun Set<Block>.scanFor(material: Material): Set<Block> {
     val blocks = HashSet<Block>()
