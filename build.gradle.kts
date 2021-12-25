@@ -16,7 +16,7 @@ description = "Kotlin kspigot plugin utils"
 
 repositories {
     mavenCentral()
-    maven("https://repo.cloudnetservice.eu/repository/releases/") // CloudNet
+    maven("https://repo.cloudnetservice.eu/repository/snapshots/") // CloudNet
     maven("https://maven.enginehub.org/repo/")
 }
 
@@ -25,7 +25,7 @@ dependencies {
     implementation(kotlin("reflect"))
     implementation("net.axay:kspigot:1.18.0")
     compileOnly("com.sk89q.worldedit:worldedit-bukkit:7.2.8")
-    compileOnly("de.dytanic.cloudnet", "cloudnet-bridge", "3.4.0-RELEASE")
+    compileOnly("de.dytanic.cloudnet", "cloudnet-bridge", "3.4.0-SNAPSHOT")
 }
 
 tasks {

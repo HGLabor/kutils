@@ -3,7 +3,9 @@ package de.hglabor.utils.kutils
 import net.axay.kspigot.event.SingleListener
 import net.axay.kspigot.event.listen
 import net.axay.kspigot.event.unregister
+import net.axay.kspigot.gui.*
 import org.bukkit.Bukkit
+import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.inventory.ItemStack
@@ -22,3 +24,9 @@ fun Player.inv(size: Int, name: String = "", content: List<ItemStack>, onClose: 
         }
     })
 }
+
+fun GUIPageBuilder<ForInventory>.defaultPlaceHolder(material: Material) = placeholder(Slots.All, namedItem(material, ""))
+
+fun GUIClickEvent<*>.cancel() = bukkitEvent.cancel()
+
+val GUICloseEvent<ForInventory>.closedByPlayer get() = bukkitEvent.reason == InventoryCloseEvent.Reason.PLAYER
