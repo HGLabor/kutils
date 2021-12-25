@@ -10,7 +10,7 @@ plugins {
 val repo = "HGLabor/kutils"
 
 group = "de.hglabor.utils"
-version = "0.0.6"
+version = "0.0.7"
 
 description = "Kotlin kspigot plugin utils"
 
