@@ -46,8 +46,8 @@ fun namedItem(material: Material, name: String): ItemStack {
 val PlayerInteractEvent.isRightClick get() = action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK
 val PlayerInteractEvent.isLeftClick get() = action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK
 
-fun Player.setItems(startSlot: Int, items: List<Material>) {
-    for (slot in items.indices) inventory.setItem(slot, items[slot+startSlot].stack())
+private fun Player.setItems(startSlot: Int, items: List<Material>) {
+    for (slot in items.indices) inventory.setItem(slot+startSlot, items[slot].stack())
 }
 
 fun Block.removeAfter(ticks: Long) = taskRunLater(ticks) {
