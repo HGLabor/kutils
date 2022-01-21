@@ -2,6 +2,7 @@ package de.hglabor.utils.kutils
 
 import net.axay.kspigot.extensions.bukkit.feedSaturate
 import net.axay.kspigot.extensions.geometry.subtract
+import net.axay.kspigot.runnables.taskRunLater
 import org.bukkit.GameMode
 import org.bukkit.Location
 import org.bukkit.Material
@@ -66,3 +67,5 @@ fun Entity.isSpectator() = this is Player && this.gameMode == GameMode.SPECTATOR
 
 fun Player.onGround() = !isFlying && location.clone().subtract(0, 0.1, 0).block.type != Material.AIR && velocity.y == 0.0
 val Player.standingBlock get() = location.block.getRelative(BlockFace.DOWN)
+
+fun Entity.removeAfter(ticks: Long) = taskRunLater(ticks) { remove() }
