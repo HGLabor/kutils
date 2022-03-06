@@ -7,16 +7,18 @@ import net.axay.kspigot.runnables.taskRunLater
 import org.bukkit.Material
 import org.bukkit.block.Block
 import org.bukkit.entity.Player
-import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 
-fun MutableList<ItemStack>.add(material: Material, amount: Int = 1) = add(ItemStack(material, amount))
+fun MutableList<ItemStack>.add(material: Material, amount: Int = 1) = add(material.stack(amount))
 fun MutableList<ItemStack>.addAll(vararg items: Any) {
     items.forEach {
-        if (it is Material) add(it)
-        else if (it is ItemStack) add(it)
+        when (it) {
+            is Material -> add(it)
+            is ItemStack -> add(it)
+            else -> error("Item must be either Material or ItemStack")
+        }
     }
 }
 
@@ -43,8 +45,8 @@ fun namedItem(material: Material, name: String): ItemStack {
     }
 }
 
-val PlayerInteractEvent.isRightClick get() = action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK
-val PlayerInteractEvent.isLeftClick get() = action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK
+val PlayerInteractEvent.isRightClick get() = action.isRightClick
+val PlayerInteractEvent.isLeftClick get() = action.isLeftClick
 
 private fun Player.setItems(startSlot: Int, items: List<Material>) {
     for (slot in items.indices) inventory.setItem(slot+startSlot, items[slot].stack())
