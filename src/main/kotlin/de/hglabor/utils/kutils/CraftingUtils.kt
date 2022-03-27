@@ -34,7 +34,7 @@ class CraftingUtils(private val customItems: List<Material> = listOf()) {
         val excludedItems: Array<String> = arrayOf(
             *woodTypes.filter { it != "oak" }.toTypedArray(), "carpet", "pane", "terracotta", "glass",
             "banner", "bed", "wall", "slab", "stairs", "blackstone", "quartz", "sandstone",
-            "polished", "chiseled", "pillar"
+            "polished", "chiseled", "pillar", "map"
         )
     }
 }
