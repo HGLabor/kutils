@@ -69,3 +69,14 @@ fun Player.onGround() = !isFlying && location.clone().subtract(0, 0.1, 0).block.
 val Player.standingBlock get() = location.block.getRelative(BlockFace.DOWN)
 
 fun Entity.removeAfter(ticks: Long) = taskRunLater(ticks) { remove() }
+
+fun Entity.swap(other: Entity, teleportSound: Boolean = true, sync: Boolean = true) {
+    require(this != other)
+    val thisLoc = location.clone()
+    val otherLoc = other.location.clone()
+
+    if (sync) teleport(otherLoc) else teleportAsync(otherLoc)
+    if (teleportSound) (this as? Player)?.playSound(Sound.ENTITY_ENDERMAN_TELEPORT)
+    if (sync) other.teleport(thisLoc) else other.teleportAsync(thisLoc)
+    if (teleportSound) (other as? Player)?.playSound(Sound.ENTITY_ENDERMAN_TELEPORT)
+}
