@@ -1,7 +1,7 @@
 plugins {
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.serialization") version "1.6.10"
-    id("io.papermc.paperweight.userdev") version "1.3.2"
+    id("io.papermc.paperweight.userdev") version "1.3.7"
 
     `java-library`
     `maven-publish`
@@ -11,7 +11,7 @@ plugins {
 val repo = "HGLabor/kutils"
 
 group = "de.hglabor.utils"
-version = "0.0.20"
+version = "0.0.21"
 
 description = "Kotlin kspigot plugin utils"
 
@@ -22,10 +22,12 @@ repositories {
 }
 
 dependencies {
-    paperDevBundle("1.18.1-R0.1-SNAPSHOT")
+    paperDevBundle("1.19-R0.1-SNAPSHOT")
     implementation(kotlin("reflect"))
-    compileOnly("net.axay:kspigot:1.18.0")
-    compileOnly("com.sk89q.worldedit:worldedit-bukkit:7.2.8")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+
+    compileOnly("net.axay:kspigot:1.19.0")
+    compileOnly("com.sk89q.worldedit:worldedit-bukkit:7.2.10")
     compileOnly("de.dytanic.cloudnet", "cloudnet-bridge", "3.4.0-SNAPSHOT")
 }
 

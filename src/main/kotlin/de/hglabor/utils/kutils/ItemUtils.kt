@@ -4,6 +4,7 @@ import net.axay.kspigot.items.itemStack
 import net.axay.kspigot.items.meta
 import net.axay.kspigot.items.name
 import net.axay.kspigot.runnables.taskRunLater
+import net.kyori.adventure.text.Component
 import org.bukkit.Material
 import org.bukkit.block.Block
 import org.bukkit.entity.Player
@@ -39,7 +40,7 @@ fun List<String>.materials(): List<Material> {
     return list
 }
 
-fun namedItem(material: Material, name: String): ItemStack {
+fun namedItem(material: Material, name: Component): ItemStack {
     return itemStack(material) {
         meta { this.name = name }
     }
