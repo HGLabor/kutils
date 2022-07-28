@@ -1,10 +1,6 @@
 name: Build
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: push
 
 jobs:
   build:
@@ -24,7 +20,9 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build
-      run: ./gradlew build
+      uses: burrunan/gradle-cache-action@v1
+      with:
+        arguments: build
       
     - name: Remove dev jar
       run: rm build/libs/*dev*.jar
