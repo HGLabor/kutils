@@ -63,13 +63,12 @@ publishing {
     }
     publications {
         create<MavenPublication>("maven") {
-            artifact(tasks.reobfJar)
+            from(components["java"])
+            artifact(tasks.jar.get().outputs.files.single())
 
             this.groupId = project.group.toString()
             this.artifactId = project.name.toLowerCase()
             this.version = project.version.toString()
-
-            from(components["java"])
 
             pom {
                 name.set(project.name)
