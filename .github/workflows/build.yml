@@ -25,6 +25,9 @@ jobs:
 
     - name: Build
       run: ./gradlew build
+      
+    - name: Remove dev jar
+      run: rm build/libs/*dev*.jar
     
     - name: Release
       uses: "marvinpinto/action-automatic-releases@latest"
