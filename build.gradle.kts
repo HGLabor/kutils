@@ -1,7 +1,7 @@
 plugins {
-    kotlin("jvm") version "1.7.0"
-    kotlin("plugin.serialization") version "1.7.0"
-    id("io.papermc.paperweight.userdev") version "1.3.7"
+    kotlin("jvm") version "1.7.10"
+    kotlin("plugin.serialization") version "1.7.10"
+    id("io.papermc.paperweight.userdev") version "1.3.8"
 
     `java-library`
     `maven-publish`
@@ -11,7 +11,7 @@ plugins {
 val repo = "HGLabor/kutils"
 
 group = "de.hglabor.utils"
-version = "0.0.21"
+version = "1.0.0-alpha"
 
 description = "Kotlin kspigot plugin utils"
 
@@ -24,11 +24,11 @@ repositories {
 dependencies {
     paperDevBundle("1.19-R0.1-SNAPSHOT")
     implementation(kotlin("reflect"))
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0-RC")
 
     compileOnly("net.axay:kspigot:1.19.0")
-    compileOnly("com.sk89q.worldedit:worldedit-bukkit:7.2.10")
-    compileOnly("de.dytanic.cloudnet", "cloudnet-bridge", "3.4.0-SNAPSHOT")
+    compileOnly("com.sk89q.worldedit:worldedit-bukkit:7.2.11-beta-01")
+    compileOnly("de.dytanic.cloudnet", "cloudnet-bridge", "3.5.0-SNAPSHOT")
 }
 
 tasks {
@@ -63,13 +63,12 @@ publishing {
     }
     publications {
         create<MavenPublication>("maven") {
-            artifact(tasks.reobfJar)
+            from(components["java"])
+            artifact(tasks.jar.get().outputs.files.single())
 
             this.groupId = project.group.toString()
             this.artifactId = project.name.toLowerCase()
             this.version = project.version.toString()
-
-            from(components["java"])
 
             pom {
                 name.set(project.name)
