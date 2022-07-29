@@ -1,6 +1,6 @@
 package de.hglabor.utils.kutils
 
-import de.dytanic.cloudnet.ext.bridge.bukkit.BukkitCloudNetHelper
+import eu.cloudnetservice.modules.bridge.BridgeServiceHelper
 import org.bukkit.Bukkit
 
 /** Only runs the `block` when the CloudNet bukkit helper is loaded */
@@ -20,10 +20,14 @@ inline fun cloudNet(block: CloudNetContext.() -> Unit): Boolean {
 }
 
 object CloudNetContext {
-    fun motd(motd: String) = BukkitCloudNetHelper.setMotd(motd)
-    fun motd(): String = BukkitCloudNetHelper.getMotd()
-    fun state(state: String) = BukkitCloudNetHelper.setState(state)
-    fun state(): String = BukkitCloudNetHelper.getState()
-    fun extra(extra: String) = BukkitCloudNetHelper.setExtra(extra)
-    fun ingame(autoStartService: Boolean = true) = BukkitCloudNetHelper.changeToIngame(autoStartService)
+    var motd: String
+        set(value) = BridgeServiceHelper.MOTD.set(value)
+        get() = BridgeServiceHelper.MOTD.get()
+    var state: String
+        set(value) = BridgeServiceHelper.STATE.set(value)
+        get() = BridgeServiceHelper.STATE.get()
+    var extra: String
+        set(value) = BridgeServiceHelper.EXTRA.set(value)
+        get() = BridgeServiceHelper.EXTRA.get()
+    fun ingame(autoStartService: Boolean = true) = BridgeServiceHelper.changeToIngame(autoStartService)
 }
