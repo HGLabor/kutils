@@ -30,7 +30,7 @@ class CraftingUtils(private val customItems: List<Material> = listOf()) {
 
     companion object {
         val specialItems = arrayOf(Material.WARPED_FUNGUS_ON_A_STICK, Material.RED_BED)
-        val woodTypes = arrayOf("jungle", "spruce", "birch", "acacia", "dark_oak", "crimson", "warped", "oak")
+        val woodTypes = arrayOf("oak", "jungle", "spruce", "birch", "acacia", "dark_oak", "crimson", "warped", "mangrove")
         val excludedItems: Array<String> = arrayOf(
             *woodTypes.filter { it != "oak" }.toTypedArray(), "carpet", "pane", "terracotta", "glass",
             "banner", "bed", "wall", "slab", "stairs", "blackstone", "quartz", "sandstone",
@@ -65,7 +65,6 @@ private val Material.originMaterials: List<ItemStack>? get() {
 }
 
 /** the first shaped recipe if the material has any and null otherwise */
-@Suppress("SENSELESS_COMPARISON")
 val Material.shapedRecipe: ShapedRecipe? get() = recipes.filterIsInstance<ShapedRecipe>().firstOrNull()
 val ItemStack.ingredients: List<ItemStack> get() = type.ingredients
 val Material.ingredients: List<ItemStack> get() {
